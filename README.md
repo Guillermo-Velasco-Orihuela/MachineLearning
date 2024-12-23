@@ -1,8 +1,9 @@
-# MachineLearning
+# Machine Learning
 
 ### Classification Models
 
-#### Logistic Regression
+- [Logistic Regression](/Logistic-Regression.md)
 
+### Regression Models
 
-### Regression
+- [Linear Regression](/Linear-Regression.md)
