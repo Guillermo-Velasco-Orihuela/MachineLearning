@@ -6,11 +6,11 @@ Logistic regression is a statistical model that in its basic form uses a logisti
 
 Logistic regression predicts the probability that a given input belongs to the class labeled "1". The probabilities predicting class "1" are computed with the logistic function, which is defined as:
 
-\[ P(y = 1 | x) = \frac{1}{1 + e^{-z}} \]
+P(y = 1 | x) = 1 / (1 + exp(-z))
 
-where \( z \) is the linear combination of the input features \( x \) weighted by the coefficients \( \beta \) derived from the training data:
+where z is the linear combination of the input features x weighted by the coefficients β derived from the training data:
 
-\[ z = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_nx_n \]
+z = β0 + β1x1 + β2x2 + ... + βnxn
 
 The coefficients are estimated using maximum likelihood estimation (MLE), which aims to find the parameter values that maximize the likelihood of the observed sample.
 
