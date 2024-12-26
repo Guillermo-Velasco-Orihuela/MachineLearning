@@ -14,29 +14,35 @@ z = β0 + β1x1 + β2x2 + ... + βnxn
 
 The coefficients are estimated using maximum likelihood estimation (MLE), which aims to find the parameter values that maximize the likelihood of the observed sample.
 
-## Use Cases
+## Logistic Regression with linear variables
 
-- Example 1: Predicting credit approval based on financial history.
-- Example 2: Medical diagnosis prediction, such as determining whether a patient has a particular disease based on observed characteristics.
-
-## Implementation
+### Implementation
 
 Here's an example of how to implement logistic regression:
 
+##### Libraries
+
 ```python
 # Import necessary libraries
+import seaborn as sns
+import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler, OneHotEncoder, PolynomialFeatures
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import GridSearchCV
+from sklearn.compose import ColumnTransformer
+from utils import *
 
-# Example data
-X = np.array([[0, 0], [1, 1], [1, 0]])  # Features
-y = np.array([0, 1, 0])  # Labels
 
-# Initialize the Logistic Regression model
-model = LogisticRegression()
+INPUTS = ['X1','X2']
+OUTPUT = 'Y'
+X = df[INPUTS]
+y = df[OUTPUT]
 
-# Fit the model
-model.fit(X, y)
 
-# Make predictions
-predictions = model.predict(X)
+
+
