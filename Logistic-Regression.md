@@ -20,6 +20,7 @@ The main types of logistic regression include Binary Logistic Regression, Multin
 
 - **Binary logistic regression** is the most common type of logistic regression, where the dependent variable has only two possible outcomes or classes, typically represented as 0 and 1
 - **Multinomial Logistic Regression** also known as softmax regression, is used when the dependent variable has more than two unordered categories. It models the probability of an observation belonging to each class using the softmax function, which ensures that the predicted probabilities sum up to one across all classes.
+
 $$\text{softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^n e^{z_j}}$$
 - **Ordinal Logistic Regression** is employed when the dependent variable has more than two ordered categories. In other words, the outcome variable has a natural ordering or hierarchy among its categories
 
