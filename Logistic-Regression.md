@@ -1,18 +1,73 @@
 # Logistic Regression
 
-Logistic regression is a statistical model that in its basic form uses a logistic function to model a binary dependent variable. In regression analysis, logistic regression (or logit regression) is estimating the parameters of a logistic model. It is particularly useful for situations where the outcome is binary.
+Logistic regression machine learning is a key classification technique. It can work with both numerical and categorical data, making it versatile for various applications. For example, it’s commonly used to predict whether a customer will leave a service (churn), identify fraudulent transactions, or determine if a patient has a specific condition.
+
+One of the main advantages of logistic regression is its simplicity. Logistic regression machine learning not only predicts outcomes but also helps understand which factors are most important for these predictions. This makes logistic regression a practical tool for solving classification problems while providing clear insights into the data
 
 ## Fundamental Concepts and Formulas
 
-Logistic regression predicts the probability that a given input belongs to the class labeled "1". The probabilities predicting class "1" are computed with the logistic function, which is defined as:
+#### **Sigmoid Function**
 
-P(y = 1 | x) = 1 / (1 + exp(-z))
+The sigmoid or logistic function is essential for converting predicted values into probabilities in logistic regression. This function maps any real number to a value between 0 and 1, ensuring that predictions remain within this probability range. Its "S" shaped curve helps translate raw scores into a more interpretable format.
 
-where z is the linear combination of the input features x weighted by the coefficients β derived from the training data:
+$$\sigma(x) = \frac{1}{1 + e^{-x}}$$
 
-z = β0 + β1x1 + β2x2 + ... + βnxn
+A threshold value is used in logistic regression to make decisions based on these probabilities. For instance, if the predicted probability is above a certain threshold, such as 0.5, the result is 1
 
-The coefficients are estimated using maximum likelihood estimation (MLE), which aims to find the parameter values that maximize the likelihood of the observed sample.
+#### **Types of Logistic Regression**
+
+The main types of logistic regression include Binary Logistic Regression, Multinomial Logistic Regression, and Ordinal Logistic Regression.
+
+- **Binary logistic regression** is the most common type of logistic regression, where the dependent variable has only two possible outcomes or classes, typically represented as 0 and 1
+- **Multinomial Logistic Regression** also known as softmax regression, is used when the dependent variable has more than two unordered categories. It models the probability of an observation belonging to each class using the softmax function, which ensures that the predicted probabilities sum up to one across all classes.
+$$\text{softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^n e^{z_j}}$$
+- **Ordinal Logistic Regression** is employed when the dependent variable has more than two ordered categories. In other words, the outcome variable has a natural ordering or hierarchy among its categories
+
+#### Logistic Model Formula
+
+$$p(x) = \frac{e^{w_0 + w_1 x}}{1 + e^{w_0 + w_1 x}}$$
+
+- $$p(x)$$ represents the probability that Y = 1 given x
+- $$w_0$$ and $$w_1$$ are model coefficients. The $$w_0$$ is the bias term, is a constant that provides an additional adjustment to the decision boundary of the model, it shifts the entire logistic function left or right. The $$w_1$$ are associated with individual features $$(x_1, x_2...)$$ they describe the impact of each feature on the predcition. A positive coefficient increases the probability that the outcome variable Y equals 1 as the feature increases, while a negative does the opposite. The significance of the of these coefficients are determined by the p-value in hypothesis testing. The regression coefficients are estimated by maximizing the likelihood function. 
+- $$x$$ is the feature value
+
+The odds formula, particularly in the context of logistic regression, is an expression that describes the ratio of the probability of an event occurring to the probability of it not occurring. In logistic regression, if we denote $$p(x)$$ as the probability that the outcome variable $$Y$$ is 1 given predictors x, then the odds of $$Y=1$$ are given by: 
+
+$$\frac{p(x)}{1 - p(x)} = e^{w_0 + w_1x}$$
+
+The quantity of $$\frac{p(x)}{1 - p(x)}$$ is called the odds.
+
+The logistic regression model uses this odds concept to link the predictors with the outcome. Specifically, the model expresses the natural logarithm of the odds (log-odds) as a linear combination of the predictors
+
+**Derivation of Logistic Regression Odds Formula**
+
+1. **Start with the Logistic Regression Formula:**
+   We begin with the logistic regression function for probability $$p(x)$$:
+   $$p(x) = \frac{e^{w_0 + w_1x}}{1 + e^{w_0 + w_1x}}$$
+
+2. **Introduce the substitution $$\( z \):$$**
+   Let's define $$\( z = e^{w_0 + w_1x} \)$$. Substituting $$\( z \)$$ into the probability function gives:
+   $$p(x) = \frac{z}{1 + z}$$
+
+3. **Calculate \( 1 - p(x) \):**
+   To find the expression for $$\( 1 - p(x) \)$$, we subtract $$ p(x)$$ from 1:
+   $$1 - p(x) = 1 - \frac{z}{1 + z} = \frac{1 + z - z}{1 + z} = \frac{1}{1 + z}$$
+
+4. **Derive the expression for $$\( \frac{p(x)}{1 - p(x)} \)$$:**
+   Now, we form the ratio of $$p(x)$$ to $$\( 1 - p(x) \)$$:
+   $$\frac{p(x)}{1 - p(x)} = \frac{\frac{z}{1 + z}}{\frac{1}{1 + z}} = \frac{z}{1 + z} \cdot \frac{1 + z}{1} = z$$
+
+5. **Substitute back for $$\( z \)$$ and conclude:**
+   Recalling that $$\( z = e^{w_0 + w_1x} \)$$, we can substitute back to find the odds ratio:
+   $$\frac{p(x)}{1 - p(x)} = z = e^{w_0 + w_1x}$$
+
+Thus, we have shown that the odds of \( p(x) \) are given by:
+$$\frac{p(x)}{1 - p(x)} = e^{w_0 + w_1x}$$
+
+This result demonstrates how the logistic model relates the log-odds of the dependent variable being 1 to a linear combination of the predictors.
+
+
+
 
 ## Implementation 
 
